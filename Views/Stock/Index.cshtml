@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Gestión de Stock";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-dark fw-bold">Inventario de Productos</h2>
+        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarStock">
+            <i class="bi bi-plus-circle me-1"></i> Nuevo Registro
+        </button>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-bordered table-striped align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Precio Venta</th>
+                        <th>F. Ingreso</th>
+                        <th>F. Fabricación</th>
+                        <th>F. Vencimiento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="listarStock">
+                    <!-- Se llena dinámicamente con stock.js -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Stock -->
+<div class="modal fade" id="modalAgregarStock" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-primary text-white rounded-top">
+                <h5 class="modal-title">Registrar Stock</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgregarStock">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label>Producto</label>
+                            <select class="form-select" id="productoId" required></select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Cantidad</label>
+                            <input type="number" class="form-control" id="cantidad" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Precio Unitario</label>
+                            <input type="number" class="form-control" id="precioUnitario" step="0.01" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Precio Venta</label>
+                            <input type="number" class="form-control" id="precioVenta" step="0.01" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Fecha de Ingreso</label>
+                            <input type="date" class="form-control" id="fechaIngreso" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Fecha de Fabricación</label>
+                            <input type="date" class="form-control" id="fechaFabricacion" required />
+                        </div>
+                        <div class="col-md-4">
+                            <label>Fecha de Vencimiento</label>
+                            <input type="date" class="form-control" id="fechaVencimiento" required />
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4 w-100">Guardar Stock</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/stock.js"></script>
+}

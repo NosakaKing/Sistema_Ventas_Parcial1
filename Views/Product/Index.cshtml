@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Gestión de Productos";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-dark fw-bold">Productos Registrados</h2>
+        <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalAgregarProducto">
+            <i class="bi bi-plus-lg me-1"></i> Nuevo Producto
+        </button>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+            <table class="table table-bordered table-hover text-center align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Presentación</th>
+                        <th>Código de Barras</th>
+                        <th>Categoría</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="listarProductos">
+                    <!-- Productos cargados desde JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Agregar Producto -->
+<div class="modal fade" id="modalAgregarProducto" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">Registrar Producto</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgregarProducto">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label>Nombre del Producto</label>
+                            <input type="text" class="form-control" id="nombreProducto" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Presentación</label>
+                            <input type="text" class="form-control" id="presentacion" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Código de Barras</label>
+                            <input type="text" class="form-control" id="codigoBarras" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Categoría</label>
+                            <select class="form-select" id="categoriaId" required>
+                                <!-- Se llena dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark mt-4 w-100">Guardar Producto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Producto -->
+<div class="modal fade" id="modalEditarProducto" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-header bg-warning text-dark">
+                <h5 class="modal-title">Editar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditarProducto">
+                    <input type="hidden" id="editIdProducto" />
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label>Nombre del Producto</label>
+                            <input type="text" class="form-control" id="editNombreProducto" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Presentación</label>
+                            <input type="text" class="form-control" id="editPresentacion" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Código de Barras</label>
+                            <input type="text" class="form-control" id="editCodigoBarras" required />
+                        </div>
+                        <div class="col-md-6">
+                            <label>Categoría</label>
+                            <select class="form-select" id="editCategoriaId" required>
+                                <!-- Se llena dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-warning mt-4 w-100">Actualizar Producto</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

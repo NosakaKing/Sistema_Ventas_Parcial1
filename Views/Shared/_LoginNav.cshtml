@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserModel> SignInManager
+@inject UserManager<UserModel> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+     @if (User.IsInRole("Admin"))
+     {
+    <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Productos</a>
+    </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="Index">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Categorias</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Stock" asp-action="Index">Stock</a>
+            </li>
+     }else {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Index">Clientes</a>
+        </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Sales" asp-action="Index">Generar Venta</a>
+            </li>
+     }
+}
+else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Términos</a>
+        </li>
+    }
+</ul>
